@@ -6,7 +6,7 @@ export const RECORD_TYPES = {
   CLEAR_RECORDS,
 };
 
-const initialState = {
+export const initialState = {
   data: [],
 };
 
