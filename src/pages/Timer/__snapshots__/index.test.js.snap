@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expired component tests should match snapshot 1`] = `
+<div
+  className="aura-expired"
+>
+  <div
+    className="aura-expired-emoji"
+  >
+    ⚠️
+  </div>
+  <div
+    className="aura-expired-text"
+  >
+    Timer expired!
+  </div>
+</div>
+`;
+
+exports[`Timer component tests should render and invoke useEffect once 1`] = `
+<div
+  className="aura-page aura-timer"
+>
+  <h1>
+    Timer
+  </h1>
+  <div
+    className="aura-page-content"
+  >
+    <div
+      className="aura-timer-clock"
+    >
+      0:00
+    </div>
+    <Expired />
+    <div
+      className="aura-timer-buttons"
+    >
+      <Button
+        onClick={[Function]}
+      >
+        Start
+      </Button>
+      <Button
+        onClick={[Function]}
+      >
+        Reset
+      </Button>
+    </div>
+  </div>
+</div>
+`;

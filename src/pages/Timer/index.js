@@ -1,6 +1,6 @@
 // Globals
 import "./styles.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import { Button } from "components/Button";
@@ -18,9 +18,43 @@ function Expired() {
 // Component
 function Timer() {
   // Hooks - state
-  const [counter, setCounter] = useState(0);
+  let [counter, setCounter] = useState(0);
+  let [timerStarted, setTimerStarted] = useState(false);
+  let [intervalId, setIntervalId] = useState();
 
   // TODO: implement counter...
+  let countDown = 60;
+
+  useEffect(() => {
+    setCounter(countDown);
+    return () => resetTimer(intervalId);
+  }, []);
+
+  const startTimer = () => {
+    if (!timerStarted) {
+      const id = setInterval(() => {
+        countDown > 0 ? setCounter(--countDown) : clearInterval(id);
+      }, 1000);
+      setIntervalId(id);
+      setTimerStarted(true);
+    }
+  };
+
+  const resetTimer = (intervalId) => {
+    clearInterval(intervalId);
+    setIntervalId(undefined);
+    countDown = 60;
+    setCounter(countDown);
+    setTimerStarted(false);
+  };
+
+  const getFormattedTime = (seconds) => {
+    const formattedMinutes = parseInt(seconds / 60);
+    let formattedSeconds = seconds % 60;
+    formattedSeconds =
+      formattedSeconds < 10 ? "0" + formattedSeconds : formattedSeconds; //pad leading zero on seconds
+    return `${formattedMinutes}:${formattedSeconds}`;
+  };
 
   // Render
   return (
@@ -28,16 +62,16 @@ function Timer() {
       <h1>Timer</h1>
 
       <div className="aura-page-content">
-        <div className="aura-timer-clock">0:00</div>
+        <div className="aura-timer-clock">{getFormattedTime(counter)}</div>
         {counter <= 0 ? <Expired /> : null}
 
         <div className="aura-timer-buttons">
-          <Button>Start</Button>
-          <Button>Reset</Button>
+          <Button onClick={startTimer}>Start</Button>
+          <Button onClick={() => resetTimer(intervalId)}>Reset</Button>
         </div>
       </div>
     </div>
   );
 }
 
-export { Timer };
+export { Timer, Expired };
