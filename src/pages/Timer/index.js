@@ -26,12 +26,12 @@ function Timer() {
   let countDown = 60;
 
   useEffect(() => {
-    setCounter(countDown);
     return () => resetTimer(intervalId);
   }, []);
 
   const startTimer = () => {
     if (!timerStarted) {
+      setCounter(countDown);
       const id = setInterval(() => {
         countDown > 0 ? setCounter(--countDown) : clearInterval(id);
       }, 1000);

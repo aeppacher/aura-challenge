@@ -52,6 +52,8 @@ describe("Timer component tests", () => {
     expect(setIntervalId).toHaveBeenCalledWith(expect.any(Number));
     expect(setTimerStarted).toHaveBeenCalledTimes(1);
     expect(setTimerStarted).toHaveBeenCalledWith(true);
+    expect(setCounter).toHaveBeenCalledTimes(1);
+    expect(setCounter).toHaveBeenCalledWith(60);
   });
 
   it("on reset button click should call setInterval and timerstarted", () => {
