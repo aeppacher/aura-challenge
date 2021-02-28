@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalRecords component tests should match snapshot 1`] = `
+<div
+  className="aura-page aura-global_records"
+>
+  <h1>
+    Top Records of 2020
+  </h1>
+  <div
+    className="aura-page-content"
+  />
+</div>
+`;
+
+exports[`GlobalRecords component tests should render and invoke useEffect once 1`] = `
+<div
+  className="aura-page aura-global_records"
+>
+  <h1>
+    Top Records of 2020
+  </h1>
+  <div
+    className="aura-page-content"
+  />
+</div>
+`;
