@@ -42,6 +42,7 @@ function Timer() {
 
   const resetTimer = (intervalId) => {
     clearInterval(intervalId);
+    setIntervalId(undefined);
     countDown = 60;
     setCounter(countDown);
     setTimerStarted(false);
@@ -73,4 +74,4 @@ function Timer() {
   );
 }
 
-export { Timer };
+export { Timer, Expired };
